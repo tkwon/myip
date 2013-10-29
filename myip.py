@@ -12,9 +12,17 @@ if response.getcode() == 200:
 else:
 	print "not 200"
 	
-ifp = open('ipfile.txt','r')
-old_ip = ifp.read()
+try:	
+	ifp = open('ipfile.txt','r')
+	old_ip = ifp.read()
+	ifp.close()
+except IOError:
+	old_ip = "0.0.0.0"
+
+
 if old_ip == new_ip:
 	print "no change"
 else:
-	
+	ofp = open('ipfile.txt', 'w')
+	ofp.write(new_ip)
+	print old_ip, ' changed to ', new_ip
