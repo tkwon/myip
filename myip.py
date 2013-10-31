@@ -31,7 +31,7 @@ todaysdate = str(datetime.date.today())
 
 if old_ip == new_ip:
 	print "no change"
-	logfile.write(todaysdate + " no change")
+	logfile.write(todaysdate + " no change\n")
 else:
 	ofp = open('ipfile.txt', 'w')
 	ofp.write(new_ip)
