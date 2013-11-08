@@ -16,14 +16,14 @@ else:
 	print "not 200"
 	
 try:	
-	ifp = open('ipfile.txt','r')
+	ifp = open('/home/pi/django/myip/ipfile.txt','r')
 	old_ip = ifp.read()
 	ifp.close()
 except IOError:
 	old_ip = "0.0.0.0"
 
 try:
-	logfile = open('myip.log', 'a')
+	logfile = open('/home/pi/django/myip/myip.log', 'a')
 except IOError:
 	print "Failed to open myip.log"	
 
@@ -33,7 +33,7 @@ if old_ip == new_ip:
 	print "no change"
 	logfile.write(todaysdate + " no change\n")
 else:
-	ofp = open('ipfile.txt', 'w')
+	ofp = open('/home/pi/django/myip/ipfile.txt', 'w')
 	ofp.write(new_ip)
 	print old_ip, ' changed to ', new_ip
 	subject = "Your IP has been changed to: " + new_ip
